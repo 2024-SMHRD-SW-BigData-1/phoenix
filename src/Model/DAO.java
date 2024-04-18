@@ -23,11 +23,9 @@ public class DAO {
       Drama_list.add(new musicvo("도깨비", "C:/Users/smhrd/Desktop/mini_music_drama/에일리 첫눈처럼 너에게 가겠다 도깨비.mp3"));
       Drama_list.add(new musicvo("아내의 유혹", "C:/Users/smhrd/Desktop/mini_music_drama/차수경 용서 못해 아내의유혹.mp3"));
       Drama_list.add(new musicvo("시크릿가든", "C:/Users/smhrd/Desktop/mini_music_drama/김범수 나타나 시크릿 가든.mp3"));
-      Drama_list.add(
-            new musicvo("스카이캐슬", "C:/Users/smhrd/Desktop/mini_music_drama/하진 We All Lie We all lie 스카이캐슬.mp3"));
+      Drama_list.add(new musicvo("스카이캐슬", "C:/Users/smhrd/Desktop/mini_music_drama/하진 We All Lie We all lie 스카이캐슬.mp3"));
       Drama_list.add(new musicvo("미생", "C:/Users/smhrd/Desktop/mini_music_drama/한희정 Tomorrow 미생.mp3"));
-      Drama_list
-            .add(new musicvo("시그널", "C:/Users/smhrd/Desktop/mini_music_drama/정차식 나는 너를 I will forget you 시그널.mp3"));
+      Drama_list.add(new musicvo("시그널", "C:/Users/smhrd/Desktop/mini_music_drama/정차식 나는 너를 I will forget you 시그널.mp3"));
       Drama_list.add(new musicvo("미안하다 사랑하다", "C:/Users/smhrd/Desktop/mini_music_drama/박효신 눈의 꽃 미안하다사랑한다.mp3"));
       Drama_list.add(new musicvo("연애시대", "C:/Users/smhrd/Desktop/mini_music_drama/스윗소로우 아무리 생각해도 난 너를 연애시대.mp3"));
 
@@ -38,23 +36,16 @@ public class DAO {
 
       ArrayList<musicvo> Drama_list = new ArrayList<>();
 
-      Drama_list.add(new musicvo("클래식",
-            "C:/Users/smhrd/Desktop/mini_music_drama/자전거탄풍경 너에게 난 나에게 넌 Me to You You to Me 클래식.mp3"));
-      Drama_list.add(
-            new musicvo("겨울왕국", "C:/Users/smhrd/Desktop/mini_music_drama/Idina Menzel 이디나 멘젤 Let It Go 겨울왕국.mp3"));
-      Drama_list.add(new musicvo("타이타닉",
-            "C:/Users/smhrd/Desktop/mini_music_drama/Céline Dion My Heart Will Go On 타이타닉.mp3"));
-      Drama_list
-            .add(new musicvo("웰컴 투 동막골", "C:/Users/smhrd/Desktop/mini_music_drama/A Waltz of Sleigh 웰컴 투 동막골.mp3"));
-      Drama_list.add(new musicvo("비긴어게인",
-            "C:/Users/smhrd/Desktop/mini_music_drama/너 같은 사람이 필요해 Adam Levine No One Else Like You 비긴어게인.mp3"));
+      Drama_list.add(new musicvo("클래식","C:/Users/smhrd/Desktop/mini_music_drama/자전거탄풍경 너에게 난 나에게 넌 Me to You You to Me 클래식.mp3"));
+      Drama_list.add(new musicvo("겨울왕국", "C:/Users/smhrd/Desktop/mini_music_drama/Idina Menzel 이디나 멘젤 Let It Go 겨울왕국.mp3"));
+      Drama_list.add(new musicvo("타이타닉","C:/Users/smhrd/Desktop/mini_music_drama/Céline Dion My Heart Will Go On 타이타닉.mp3"));
+      Drama_list.add(new musicvo("웰컴 투 동막골", "C:/Users/smhrd/Desktop/mini_music_drama/A Waltz of Sleigh 웰컴 투 동막골.mp3"));
+      Drama_list.add(new musicvo("비긴어게인","C:/Users/smhrd/Desktop/mini_music_drama/너 같은 사람이 필요해 Adam Levine No One Else Like You 비긴어게인.mp3"));
       Drama_list.add(new musicvo("범죄와의 전쟁", "C:/Users/smhrd/Desktop/mini_music_drama/장기하와 얼굴들 풍문으로 들었소 범죄와의 전쟁.mp3"));
-      Drama_list.add(
-            new musicvo("몬스터 주식회사", "C:/Users/smhrd/Desktop/mini_music_drama/If I Didn t Have You 몬스터 주식회사.mp3"));
+      Drama_list.add(new musicvo("몬스터 주식회사", "C:/Users/smhrd/Desktop/mini_music_drama/If I Didn t Have You 몬스터 주식회사.mp3"));
       Drama_list.add(new musicvo("살인의 추억", "C:/Users/smhrd/Desktop/mini_music_drama/우울한 편지 유재하 살인의 추억.mp3"));
       Drama_list.add(new musicvo("과속스캔들", "C:/Users/smhrd/Desktop/mini_music_drama/박보영 아마도 그건 과속스캔틀OST.mp3"));
-      Drama_list
-            .add(new musicvo("하울의 움직이는 성", "C:/Users/smhrd/Desktop/mini_music_drama/인생의 회전목마 하울의 움직이는 성 OST.mp3"));
+      Drama_list.add(new musicvo("하울의 움직이는 성", "C:/Users/smhrd/Desktop/mini_music_drama/인생의 회전목마 하울의 움직이는 성 OST.mp3"));
 
       return Drama_list;
    }
@@ -78,7 +69,7 @@ public class DAO {
       }
    }
 
-   public void Dbclose() { 
+   public void Dbclose() {
       try {
          if (rs != null)
             rs.close();
@@ -91,12 +82,12 @@ public class DAO {
       }
    }
 
-   public int sign_up(DTO dto) { // 회원가입
+   public int sign_up(DTO dto) {
 
       Dbopen();
 
       try {
-         String sql = "INSERT INTO USER_INFO VALUES(?, ?, ?, ?, ?)";
+         String sql = "INSERT INTO USER_INFO(USER_ID, USER_PW, NAME, AGE, NICKNAME) VALUES(?, ?, ?, ?, ?)";
          psmt = conn.prepareStatement(sql);
 
          psmt.setString(1, dto.get_id());
@@ -116,7 +107,7 @@ public class DAO {
       return cnt;
    }
 
-   public DTO login(DTO dto) { // 로그인
+   public DTO login(DTO dto) { // id, pw
 
       Dbopen();
 
@@ -151,7 +142,8 @@ public class DAO {
       return login_dto;
    }
 
-   public ArrayList<DTO> questionsDrama() { // 드라마 문제
+   // 드라마 문제
+   public ArrayList<DTO> questionsDrama() {
       Dbopen();
 
       ArrayList<DTO> questionsDrama = new ArrayList<DTO>();
@@ -172,6 +164,9 @@ public class DAO {
 
             DTO dto = new DTO(d_m_title, music_route, hint1, hint2, points, level_rate, d_m_cd);
             questionsDrama.add(dto);
+
+//            Collections.shuffle(questionsDrama);
+//            random(questionsDrama);
          }
 
       } catch (SQLException e) {
@@ -183,7 +178,8 @@ public class DAO {
       return questionsDrama;
    }
 
-   public ArrayList<DTO> questionsMovie() { // 영화 문제
+   // 영화 문제
+   public ArrayList<DTO> questionsMovie() {
       Dbopen();
       ArrayList<DTO> questionsMovie = new ArrayList<DTO>();
 
@@ -205,6 +201,7 @@ public class DAO {
 
             DTO dto = new DTO(d_m_title, music_route, hint1, hint2, points, level_rate, d_m_cd);
             questionsMovie.add(dto);
+//               Collections.shuffle(questionsMovie);
          }
 
       } catch (SQLException e) {
@@ -217,62 +214,69 @@ public class DAO {
       return questionsMovie;
    }
 
-   public DTO userRanking(DTO dto) { // 유저 닉네임, 점수 출력
-      Dbopen();
-      String sql = "SELECT NICKNAME, SCORE FROM USER_INFO WHERE user_id = ?";
-      
-      try {
+   public DTO userRanking(DTO dto) {
+	      Dbopen();
+//	      String sql = "select r.nickname, r.score from user_info u, ranking r where u.nickname = r.nickname and user_id = ?";
+	      String sql = "SELECT NICKNAME, SCORE FROM USER_INFO WHERE USER_ID = ?";
 
-         psmt = conn.prepareStatement(sql);
-         psmt.setString(1, dto.get_id());
+//	      System.out.println(dto.get_id());
+	      try {
 
-         rs = psmt.executeQuery();
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setString(1, dto.get_id());
 
-         if (rs.next()) {
-            String nickname = rs.getString("nickname");
-            int score = rs.getInt("score");
+	         rs = psmt.executeQuery();
 
-            dto = new DTO(nickname, score);
-         }
+	         if (rs.next()) {
+	            String nickname = rs.getString("nickname");
+	            int score = rs.getInt("score");
 
-      } catch (SQLException e) {
-         System.out.println("데이터 베이스 오류");
-         e.printStackTrace();
-      } finally {
-         Dbclose();
-      }
-      return dto;
-   }
+	            dto = new DTO(nickname, score);
+//	            System.out.println("DAO : " + nickname);
+	         }
 
-   public ArrayList<DTO> ranking() { // 상위 10명 랭킹 출력
-      Dbopen();
+	      } catch (SQLException e) {
+	         System.out.println("데이터 베이스 오류");
+	         e.printStackTrace();
+	      } finally {
+	         Dbclose();
+	      }
+	      return dto;
+	   }
 
-      ArrayList<DTO> ranking = new ArrayList<DTO>();
 
-       String sql = "SELECT NICKNAME, SCORE, RANK() OVER(ORDER BY SCORE DESC) AS 순위 FROM USER_INFO WHERE SCORE IS NOT NULL ORDER BY SCORE DESC";
-      try {
+   public ArrayList<DTO> ranking() {
+	      Dbopen();
 
-         psmt = conn.prepareStatement(sql);
-         rs = psmt.executeQuery();
+	      ArrayList<DTO> ranking = new ArrayList<DTO>();
 
-         while (rs.next()) {
-            String nickname = rs.getString("nickname");
-            int score = rs.getInt("score");
+//	      String sql = "SELECT * FROM RANKING ORDER BY SCORE DESC";
+	      String sql = "SELECT NICKNAME, SCORE, RANK() OVER(ORDER BY SCORE DESC) AS 순위 FROM USER_INFO WHERE SCORE IS NOT NULL ORDER BY SCORE DESC";
+	      try {
 
-            DTO dto = new DTO(nickname, score);
-            ranking.add(dto);
-         }
+	         psmt = conn.prepareStatement(sql);
+	         rs = psmt.executeQuery();
 
-      } catch (SQLException e) {
-         System.out.println("데이터 베이스 오류");
-         e.printStackTrace();
-      } finally {
-         Dbclose();
-      }
-      return ranking;
-   }
+	         while (rs.next()) {
+	            String nickname = rs.getString("nickname");
+	            int score = rs.getInt("score");
 
-   public ArrayList<DTO> dramaPoints() { // 드라마 점수
+	            DTO dto = new DTO(nickname, score);
+	            ranking.add(dto);
+	         }
+
+	      } catch (SQLException e) {
+	         System.out.println("데이터 베이스 오류");
+	         e.printStackTrace();
+	      } finally {
+	         Dbclose();
+	      }
+	      return ranking;
+	   }
+
+
+   // 드라마 배점
+   public ArrayList<DTO> dramaPoints() {
       Dbopen();
       ArrayList<DTO> dramaPoints = new ArrayList<DTO>();
 
@@ -285,6 +289,7 @@ public class DAO {
          while (rs.next()) {
             String points = rs.getString("points");
             String hint1 = rs.getString("hint1");
+            // System.out.println(points);
             DTO dto = new DTO(points, hint1);
             dramaPoints.add(dto);
          }
@@ -298,7 +303,8 @@ public class DAO {
       return dramaPoints;
    }
 
-   public ArrayList<DTO> moviePoints() { // 영화 점수
+
+   public ArrayList<DTO> moviePoints() {
       Dbopen();
       ArrayList<DTO> moviePoints = new ArrayList<DTO>();
 
@@ -311,6 +317,7 @@ public class DAO {
          while (rs.next()) {
             String points = rs.getString("points");
             String hint1 = rs.getString("hint1");
+            // System.out.println(points);
             DTO dto = new DTO(points, hint1);
             moviePoints.add(dto);
          }
@@ -324,10 +331,12 @@ public class DAO {
       return moviePoints;
    }
 
-   public int sumDrama(DTO dto, int sum) { // 드라마 점수 총합
+// 드라마 총합
+   public int sumDrama(DTO dto, int sum) {
       Dbopen();
       int cnt = 0;
       String sql = "UPDATE USER_INFO SET SCORE = ? WHERE USER_ID = ?";
+//         String sql = "UPDATE RANKING r, user_info u SET SCORE = ? WHERE r.NICKNAME= u.NICKNAME ";
       try {
          psmt = conn.prepareStatement(sql);
          psmt.setInt(1, sum);
@@ -344,51 +353,51 @@ public class DAO {
       return cnt;
    }
 
-   public ArrayList<DTO> dramaHints() { // 드라마 힌트
+   // 영화 총합
+   public int sumMovie(DTO dto, int sum) {
       Dbopen();
-
-      ArrayList<DTO> dramaHints = new ArrayList<DTO>();
-      String sql = "SELECT HINT1 FROM QUESTION WHERE D_M_CD = 1";
-
+      int cnt = 0;
+      String sql = "UPDATE USER_INFO SET SCORE = ? WHERE USER_ID = ?";
+//         String sql = "UPDATE RANKING r, user_info u SET SCORE = ? WHERE r.NICKNAME= u.NICKNAME ";
       try {
          psmt = conn.prepareStatement(sql);
-         rs = psmt.executeQuery();
+         psmt.setInt(1, sum);
+         psmt.setString(2, dto.get_id());
 
-         while (rs.next()) {
-            String hint1 = rs.getString("HINT1");
-            DTO dto = new DTO(hint1);
-            dramaHints.add(dto);
-         }
+         cnt = psmt.executeUpdate();
 
       } catch (SQLException e) {
          System.out.println("데이터 베이스 오류");
          e.printStackTrace();
+      } finally {
+         Dbclose();
       }
-
-      return dramaHints;
+      return cnt;
    }
-   
-   public ArrayList<DTO> movieHints() { // 영화 힌트
-	      Dbopen();
-
-	      ArrayList<DTO> movieHints = new ArrayList<DTO>();
-	      String sql = "SELECT HINT1 FROM QUESTION WHERE D_M_CD = 2";
-
-	      try {
-	         psmt = conn.prepareStatement(sql);
-	         rs = psmt.executeQuery();
-
-	         while (rs.next()) {
-	            String hint1 = rs.getString("HINT1");
-	            DTO dto = new DTO(hint1);
-	            movieHints.add(dto);
-	         }
-
-	      } catch (SQLException e) {
-	         System.out.println("데이터 베이스 오류");
-	         e.printStackTrace();
-	      }
-
-	      return movieHints;
-	   }
 }
+
+//   public ArrayList<DTO> dramaHints() {
+//      Dbopen();
+//
+//      ArrayList<DTO> dramaHints = new ArrayList<DTO>();
+//      String sql = "SELECT HINT1 FROM QUESTION WHERE D_M_CD = 1";
+//
+//      try {
+//         psmt = conn.prepareStatement(sql);
+//         rs = psmt.executeQuery();
+//
+//         while (rs.next()) {
+//            String hint1 = rs.getString("HINT1");
+//            DTO dto = new DTO(hint1);
+//            dramaHints.add(dto);
+//         }
+//
+//      } catch (SQLException e) {
+//         System.out.println("데이터 베이스 오류");
+//         e.printStackTrace();
+//      }
+//
+//      return dramaHints;
+//   }
+//
+//}

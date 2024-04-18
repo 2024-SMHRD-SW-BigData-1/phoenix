@@ -1,6 +1,5 @@
 package View;
 
-import java.util.Random;
 import java.util.Scanner;
 
 import Controller.Controller;
@@ -17,7 +16,8 @@ public class Main {
 		boolean launch = true; // 반복문의 실행 조건
 		int cnt = 3;	// 총 기회
 		int sum = 0;	// 총 점수
-
+		String end;
+		
 		while (launch) { // 실행 시 첫 화면
 			System.out.println("1. 회원가입 2. 로그인");
 			int select = s.nextInt(); // 선택 사항 입력
@@ -77,16 +77,17 @@ public class Main {
 									int select3 = s.nextInt();
 
 										if (select3 == 1) { // 드라마 선택
-											System.out.println("노래를 듣고 드라마 제목을 맞춰주세요.");
-											System.out.println("드라마 ost 재생 중");
 											s.nextLine();
 											con = new Controller();
 											con.drama_music_play(index);
 											// 드라마 OST 출력
 											
-											System.out.println((index + 1) + "번 문제 : ");
+											System.out.println("======== " + (index + 1) + "번 문제" + " ========");
 
 											while (launch) {
+												System.out.println("드라마 ost 재생 중");
+												System.out.println("노래를 듣고 드라마 제목을 맞춰주세요." + "(" + con.dramaPoints(index) + "점)");
+												s.nextLine();
 												System.out.print("정답 : ");
 												answer = s.nextLine();
 												// 정답 입력
@@ -94,12 +95,13 @@ public class Main {
 												// 입력값 전달
 												
 												if (answer.equals(q1)) { // 입력 값과 정답이 같다면
+//													dto = new DTO(id);
 													con.musicStop();	
 													System.out.println("정답입니다");
 													System.out.println(" ");
 						                            sum += Integer.parseInt(con.dramaPoints(index));
 						                            con = new Controller();
-						                            con.sumMovie(dto, sum);
+						                            con.sumDrama(dto, sum);
 						                            // 음악 종료, 문구 출력, 각 문제당 점수를 합산하여 전달
 						                            
 						                            					  // 인덱스 값은 문제의 번호
@@ -122,9 +124,15 @@ public class Main {
 															con.musicStop();
 															// 랭킹을 출력하고, 음악을 종료
 															
-															System.out.println("게임종료");
-															launch = false;
-															break;
+															System.out.println("종료하려먼 1을 입력하세요");
+										                      end = s.next();
+										                      if (end == "1") {
+										                      launch = false;
+										                      break;
+										                      }else {
+										                      launch = false;
+											                  break;  
+										                      }
 															// 게임을 종료.
 														}
 															
@@ -138,37 +146,44 @@ public class Main {
 														if (cnt == 0) { // 기회가 0이라면
 															System.out.println("실패! 게임이 종료됩니다.");
 															System.out.println("======== 총 획득 점수 ========");
-															dto = new DTO(id);
 															con = new Controller();
 															con.userRanking(dto);
+															
 															// 유저의 총 점수를 출력 및 전달
 															
 															System.out.println("=========================== \n");
+															System.out.println();
 						                                    System.out.println("======== 랭킹 순위 ========");
-															con = new Controller();
+//															con = new Controller();
 															con.ranking();
 															con.musicStop();
 															// 랭킹을 출력하고, 음악을 종료
 															
-															launch = false;				
-															break;
-																	}
+															System.out.println("종료하려먼 1을 입력하세요");
+										                      end = s.next();
+										                      if (end == "1") {
+										                      launch = false;
+										                      break;
+										                      }else {
+										                      launch = false;
+											                  break;  
+										                      }
+														}
 													}
 												}
 											}
 											
 										}else if(select3 == 2) { // 영화 선택
-											System.out.println("노래를 듣고 영화 제목을 맞춰주세요.");
-											System.out.println("======== " + (index + 1) + "번 문제"+ " ========");
-											System.out.println("영화 ost 재생 중");
 											s.nextLine();
+											
+											System.out.println("======== " + (index + 1) + "번 문제"+ " ========");
 											con = new Controller();
 											con.movie_music_play(index);
 											// 영화 OST 재생
 											
-											System.out.println((index + 1) + "번 문제 : ");
-											
 											while (launch) {
+												System.out.println("영화 ost 재생 중");
+												System.out.println("노래를 듣고 영화 제목을 맞춰주세요." + "(" + con.moviePoints(index) + "점)");
 												System.out.print("정답 : ");
 												answer = s.nextLine();
 												// 정답 입력
@@ -193,21 +208,28 @@ public class Main {
 														
 													}else{ // 마지막 문제가 맞다면
 														System.out.println("======== 총 획득 점수 ========");
-														dto = new DTO(id);
 														con = new Controller();
+														con.userRanking(dto);
 														// 유저의 총 점수를 출력 및 전달
 														
-														con.userRanking(dto);
 														System.out.println("===========================");
 														System.out.println();
 														System.out.println("======== 랭킹 순위 ========");
-														con.musicStop();
 														con.ranking();
+														con.musicStop();
 														// 랭킹을 출력하고 음악을 종료
 														
 														System.out.println("게임종료");
-														launch = false;
-														break;
+														
+														System.out.println("종료하려먼 1을 입력하세요");
+									                      end = s.next();
+									                      if (end == "1") {
+									                      launch = false;
+									                      break;
+									                      }else {
+									                      launch = false;
+										                  break;  
+									                      }
 														// 게임을 종료
 													}
 											}else{ // 입력 값이 정답과 다르다면
@@ -221,18 +243,25 @@ public class Main {
 														con.musicStop();
 														System.out.println("실패! 게임이 종료됩니다.");
 														System.out.println("======== 총 획득 점수 ========");
-														dto = new DTO(id);
 														con = new Controller();
 														con.userRanking(dto);
 														// 유저의 총 점수를 출력 및 전달
 														
 														System.out.println("=========================== \n");
 														System.out.println("======== 랭킹 순위 ========");
+//														con = new Controller();
 														con.ranking();
 														// 랭킹을 출력하고, 음악을 종료
 														
-														launch = false;
-														break;
+														System.out.println("종료하려먼 1을 입력하세요");
+									                      end = s.next();
+									                      if (end == "1") {
+									                      launch = false;
+									                      break;
+									                      }else {
+									                      launch = false;
+										                  break;  
+									                      }
 													}
 												}
 											}
@@ -240,28 +269,44 @@ public class Main {
 								}
 										
 								}else if (select2 == 2){ // 만약 로그인 후 2번(게임종료)을 선택했다면
-									System.out.println("게임 종료");
+									System.out.println("게임이 종료됩니다.");
 									launch = false; // 게임 종료
 									
 								}else if (select2 == 3){ // 만약 로그인 후 3번(랭킹보기)을 선택했다면
 									 System.out.println("======== 나의 순위 ========");
-									 dto = new DTO(id);
 				                     con = new Controller();
 				                     con.userRanking(dto);
 				                     // 나의 순위 출력
 				                     
 				                     System.out.println("===========================");
-				                     System.out.println();
-				                     System.out.println("======== 랭킹 순위 ========");
-				                     con.ranking();
+				                      System.out.println();
+				                      System.out.println("======== 랭킹 순위 ========");
+				                      con.ranking();
+				                      
+				                      System.out.println("종료하려먼 1을 입력하세요");
+				                      end = s.next();
+				                      if (end == "1") {
+				                      launch = false;
+				                      break;
+				                      }else {
+				                      launch = false;
+					                  break;  
+				                      }
+
 				                     // 상위 10명 랭킹 출력
 				                     
-				                     launch = false;
 								}
 						}
 					}else{ // 로그인에 실패 했을 경우
-						launch = false;// 게임 종료
-						
+						System.out.println("종료하려먼 1을 입력하세요");
+	                      end = s.next();
+	                      if (end == "1") {
+	                      launch = false;
+	                      break;
+	                      }else {
+	                      launch = false;
+		                  break;  
+	                      }
 					}
 				}
 			}
